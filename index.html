@@ -1,0 +1,98 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#ffd6e8">
+  <title>Happy Birthday, Bhavani!</title>
+  <style>
+    :root { color-scheme: light; --ink: #54233f; --pink: #ed4389; --muted: #805773; }
+    * { box-sizing: border-box; }
+    body { margin: 0; min-height: 100vh; display: grid; place-items: center; overflow: hidden; padding: 24px; color: var(--ink); font-family: ui-rounded, "Segoe UI", system-ui, sans-serif; background: radial-gradient(ellipse at 12% 16%, #ff9dc7 0, transparent 34%), radial-gradient(ellipse at 88% 80%, #ffb1dc 0, transparent 35%), radial-gradient(ellipse at 76% 15%, #e2b7ff 0, transparent 30%), linear-gradient(145deg, #fff0f7, #ffd5e9 48%, #ffe0f1); }
+    .orb { position: fixed; width: 270px; height: 270px; border-radius: 50%; filter: blur(2px); opacity: .28; pointer-events: none; }
+    .orb.one { background: #ff58a2; top: -130px; right: 8%; }.orb.two { background: #c96bff; bottom: -150px; left: 4%; }
+    .sparkle { position: fixed; color: #d05d96; opacity: .65; user-select: none; animation: float 4s ease-in-out infinite; }
+    .s1 { top: 13%; left: 13%; font-size: 28px; }.s2 { top: 19%; right: 15%; font-size: 20px; animation-delay: -1s; }.s3 { bottom: 17%; left: 20%; font-size: 22px; animation-delay: -2s; }.s4 { right: 12%; bottom: 19%; font-size: 30px; animation-delay: -3s; }
+    @keyframes float { 50% { transform: translateY(-12px) rotate(14deg); } }
+    .party-float { position: fixed; z-index: 0; bottom: -90px; font-size: clamp(34px, 5vw, 58px); pointer-events: none; user-select: none; animation: rise 13s linear infinite; }
+    .balloon { font-size: clamp(48px, 7vw, 78px); animation-duration: 17s; }
+    .f1 { left: 7%; animation-delay: -2s; }.f2 { left: 24%; animation-delay: -10s; }.f3 { right: 8%; animation-delay: -6s; }.f4 { right: 25%; animation-delay: -14s; }.f5 { left: 43%; animation-delay: -7s; }
+    @keyframes rise { 0% { transform: translateY(0) rotate(-8deg); opacity: 0; } 12% { opacity: .8; } 85% { opacity: .8; } 100% { transform: translateY(-120vh) rotate(12deg); opacity: 0; } }
+    main { position: relative; z-index: 1; width: min(100%, 760px); padding: clamp(38px, 8vw, 76px) clamp(22px, 7vw, 68px); text-align: center; border: 1px solid rgba(255,255,255,.9); border-radius: 34px; background: rgba(255,250,253,.84); box-shadow: 0 28px 90px rgba(153,65,119,.2), inset 0 1px white; backdrop-filter: blur(14px); animation: arrive .8s cubic-bezier(.2,.8,.2,1) both; }
+    @keyframes arrive { from { opacity: 0; transform: translateY(18px) scale(.98); } to { opacity: 1; transform: none; } }
+    .cake { display: inline-block; font-size: clamp(48px, 10vw, 68px); line-height: 1; margin-bottom: 22px; filter: drop-shadow(0 7px 8px #ed9db566); cursor: pointer; transition: transform .25s; }
+    .cake:hover { transform: rotate(-10deg) scale(1.12); }
+    .eyebrow { margin: 0 0 13px; color: #c54c87; font-size: .76rem; font-weight: 800; letter-spacing: .23em; text-transform: uppercase; }
+    h1 { margin: 0; color: #d99a00; font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.7rem, 9vw, 5.8rem); font-weight: 500; letter-spacing: -.055em; line-height: 1.02; text-shadow: 0 0 8px #ffd54a99, 0 0 20px #ffc40080; }
+    h1 span { display: block; color: #d99a00; font-style: italic; text-shadow: 0 0 8px #ffd54acc, 0 0 22px #ffc400aa; }
+    .subtitle { margin: 22px 0 30px; color: var(--muted); font-size: clamp(1rem, 2.7vw, 1.16rem); line-height: 1.7; }
+    .actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+    button { border: 0; border-radius: 999px; padding: 15px 25px; background: linear-gradient(110deg, #ff70a8, #ec4389 52%, #ae61df); color: white; font: inherit; font-weight: 750; cursor: pointer; box-shadow: 0 10px 24px #d36cae66; transition: transform .2s, box-shadow .2s; }
+    button:hover { transform: translateY(-2px); box-shadow: 0 14px 28px #d36cae88; }
+    button:focus-visible, .cake:focus-visible { outline: 3px solid #7c4dd2; outline-offset: 4px; }
+    .wish-button { background: linear-gradient(110deg, #b96be8, #8060df); }
+    .wish { min-height: 1.6em; margin: 18px 0 0; color: #b33f79; font-weight: 700; opacity: 0; transform: translateY(8px); transition: opacity .35s, transform .35s; }
+    .wish.visible { opacity: 1; transform: translateY(0); }
+    .footer { margin: 24px 0 0; color: #a28da4; font-size: .85rem; }
+    #confetti { position: fixed; inset: 0; width: 100%; height: 100%; pointer-events: none; z-index: 5; }
+    @media (max-width: 480px) { main { border-radius: 26px; } .sparkle { opacity: .4; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; transition-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <canvas id="confetti" aria-hidden="true"></canvas>
+  <span class="orb one" aria-hidden="true"></span><span class="orb two" aria-hidden="true"></span>
+  <span class="sparkle s1" aria-hidden="true">✦</span><span class="sparkle s2" aria-hidden="true">✧</span><span class="sparkle s3" aria-hidden="true">✧</span><span class="sparkle s4" aria-hidden="true">✦</span>
+  <span class="party-float balloon f1" aria-hidden="true">🎈</span><span class="party-float balloon f3" aria-hidden="true">🎈</span>
+  <span class="party-float f2" aria-hidden="true">😊</span><span class="party-float f4" aria-hidden="true">😄</span><span class="party-float f5" aria-hidden="true">🥳</span>
+  <main>
+    <div class="cake" id="cake" role="button" tabindex="0" aria-label="Pop confetti">🎂</div>
+    <p class="eyebrow">Today is all about you</p>
+    <h1>Happy Birthday,<span>Bhavani!</span></h1>
+    <p class="subtitle">Wishing you a day filled with big smiles, lovely surprises,<br> and everything that makes you happiest. ✨</p>
+    <div class="actions">
+      <button id="music-button" type="button" aria-pressed="false" aria-label="Play birthday music">▶ <span>Play birthday music</span></button>
+      <button id="wish-button" class="wish-button" type="button">💌 <span>Open your birthday wish</span></button>
+    </div>
+    <p id="wish" class="wish" aria-live="polite"></p>
+    <p class="footer">Tap the cake for a confetti surprise! 🎉</p>
+  </main>
+  <script>
+    // Original birthday tune generated in the browser to keep this page self-contained.
+    const button = document.getElementById('music-button');
+    let audio, playing = false, timers = [];
+    const melody = [392,392,440,392,523,494,392,392,440,392,587,523,392,392,784,659,523,494,440,698,698,659,523,587,523];
+    function playTune() {
+      audio = audio || new (window.AudioContext || window.webkitAudioContext)();
+      const beat = .34, start = audio.currentTime + .05;
+      melody.forEach((frequency, index) => {
+        const at = start + index * beat, osc = audio.createOscillator(), gain = audio.createGain();
+        osc.type = 'sine'; osc.frequency.value = frequency; gain.gain.setValueAtTime(0, at); gain.gain.linearRampToValueAtTime(.16, at + .025); gain.gain.exponentialRampToValueAtTime(.001, at + beat * .88); osc.connect(gain); gain.connect(audio.destination); osc.start(at); osc.stop(at + beat * .9);
+      });
+      timers.push(setTimeout(() => { if (playing) playTune(); }, melody.length * beat * 1000));
+    }
+    button.addEventListener('click', async () => {
+      playing = !playing;
+      if (playing) { audio = audio || new (window.AudioContext || window.webkitAudioContext)(); await audio.resume(); playTune(); }
+      else { timers.forEach(clearTimeout); timers = []; if (audio) await audio.suspend(); }
+      button.setAttribute('aria-pressed', String(playing)); button.setAttribute('aria-label', playing ? 'Pause birthday music' : 'Play birthday music');
+      button.innerHTML = (playing ? '❚❚ ' : '▶ ') + '<span>' + (playing ? 'Pause birthday music' : 'Play birthday music') + '</span>';
+    });
+
+    const canvas = document.getElementById('confetti'), ctx = canvas.getContext('2d');
+    const colors = ['#f3338b','#ff77a8','#8157eb','#ffacd1','#ff6038','#df83d2','#ff4fc3'];
+    let pieces = [], width, height, dpr = 1;
+    function resize() { dpr = Math.min(devicePixelRatio || 1, 2); width = innerWidth; height = innerHeight; canvas.width = width * dpr; canvas.height = height * dpr; canvas.style.width = width + 'px'; canvas.style.height = height + 'px'; ctx.setTransform(dpr,0,0,dpr,0,0); }
+    function burst(count = 110, originX = Math.random() * width) {
+      for (let i=0;i<count;i++) pieces.push({x:originX+(Math.random()-.5)*90,y:-20-Math.random()*height*.3,vx:(Math.random()-.5)*3.5,vy:2+Math.random()*4,size:4+Math.random()*6,spin:Math.random()*6,turn:(Math.random()-.5)*.16,color:colors[Math.floor(Math.random()*colors.length)],shape:Math.random()>.5});
+    }
+    function draw() { ctx.clearRect(0,0,width,height); pieces=pieces.filter(p=>p.y<height+20); pieces.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=.018;p.spin+=p.turn;ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.spin);ctx.fillStyle=p.color;if(p.shape){ctx.beginPath();ctx.arc(0,0,p.size*.55,0,Math.PI*2);ctx.fill();}else ctx.fillRect(-p.size/2,-p.size/2,p.size,p.size*.65);ctx.restore();});requestAnimationFrame(draw); }
+    addEventListener('resize',resize); resize(); burst(150); setInterval(()=>burst(40),4000); draw();
+    const cake=document.getElementById('cake');
+    function cakePop(){const rect=cake.getBoundingClientRect();for(let i=0;i<90;i++){pieces.push({x:rect.left+rect.width/2,y:rect.top+rect.height/2,vx:(Math.random()-.5)*9,vy:(Math.random()-.8)*9,size:4+Math.random()*7,spin:Math.random()*6,turn:(Math.random()-.5)*.2,color:colors[Math.floor(Math.random()*colors.length)],shape:Math.random()>.5});}}
+    cake.addEventListener('click',cakePop); cake.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();cakePop();}});
+    const wishes=['May your year sparkle with joy, Bhavani! 💖','Wishing you all the cake and happiness today! 🎂','You make the world brighter—have the best birthday! ✨'];let wishIndex=0;
+    document.getElementById('wish-button').addEventListener('click',()=>{const wish=document.getElementById('wish');wish.textContent=wishes[wishIndex++%wishes.length];wish.classList.add('visible');burst(55,width/2);});
+  </script>
+</body>
+</html>
